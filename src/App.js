@@ -1,23 +1,29 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { useState } from 'react';
+import LoginPage from './LoginPage';
+import RegisterPage from './RegisterPage';
+import 'bootstrap/dist/css/bootstrap.min.css'; // Bootstrap CSS import edilmelidir
 
-function App() {
+const App = () => {
+  const [isLoginPage, setIsLoginPage] = useState(true); // Başlangıçta login sayfası gözükecek
+
+  // Kayıt sayfasına geçiş
+  const goToRegister = () => {
+    setIsLoginPage(false);
+  };
+
+  // Giriş sayfasına geçiş
+  const goToLogin = () => {
+    setIsLoginPage(true);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {isLoginPage ? (
+        <LoginPage goToRegister={goToRegister} />
+      ) : (
+        <RegisterPage goToLogin={goToLogin} />
+      )}
     </div>
   );
 }
