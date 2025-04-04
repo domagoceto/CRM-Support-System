@@ -1,52 +1,36 @@
-/* Ana sayfa arka planı */
-.page-container {
-  background-color: #FF6347; /* Tomato (Kırmızımsı Turuncu) */
-  min-height: 100vh; /* Sayfanın tamamını kaplamak için */
-}
-
-/* Navbar bölümü */
-.navbar {
-  background-color: #343a40; /* Navbarın arka planını koyu renk yapıyoruz */
-}
-
-/* Diğer içerik alanları */
-.content {
-  padding: 20px;
-  color: white; /* Yazıları beyaz yapalım, kırmızı arka planda okunabilirlik sağlasın */
-}
-
-
-/* Modal dışındaki arka planın stilini ayarlıyoruz */
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(255, 0, 0, 0.5);  /* Kırmızı renk (rgba formatında) */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
-}
-
-/* Modal içeriğinin stilini ayarlıyoruz */
-.modal-content {
-  background-color: #fff;
+.form-popup-box {
+  position: fixed; /* Sayfanın ortasında sabit dursun */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #FF6347;
   padding: 30px;
-  border-radius: 8px;
-  width: 100%;
-  max-width: 500px;
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  width: 90%;
+  max-width: 400px;
+  z-index: 9999; /* Diğer her şeyin üzerinde olsun */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Modal kapama butonunun stilini */
 .close-btn {
   position: absolute;
   top: 10px;
   right: 10px;
-  background: none;
-  border: none;
-  font-size: 1.5rem;
+  background: white;
+  color: #FF6347;
+  padding: 5px 10px;
+  border-radius: 50%;
+  font-weight: bold;
   cursor: pointer;
+  z-index: 10000;
+}
+
+.navbar-nav .nav-link {
+  cursor: pointer;
+  color: white;
+}
+
+.navbar-nav .nav-link:hover {
+  text-decoration: underline;
+  color: #ffc107;
 }

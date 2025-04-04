@@ -1,33 +1,47 @@
 import './App.css';
 import React, { useState } from 'react';
-import RegisterPage from './RegisterPage'; // Kayıt Sayfası
-import LoginPage from './LoginPage'; // Giriş Sayfası
+import { Link, Element } from 'react-scroll';
+import RegisterPage from './RegisterPage';
+import LoginPage from './LoginPage';
+import HomePage from './HomePage';
+import About from './About';
+import Contact from './Contact';
 
 const App = () => {
-  const [currentPage, setCurrentPage] = useState('home'); // Başlangıçta ana sayfa görünsün
+  const [currentPage, setCurrentPage] = useState('home');
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
+  const [isRegisterOpen, setIsRegisterOpen] = useState(false);
 
-  // Sayfalar arasında geçiş yapmak için fonksiyonlar
-  const goToHome = () => setCurrentPage('home');
-  const goToAbout = () => setCurrentPage('about');
-  const goToContact = () => setCurrentPage('contact');
-  const goToLogin = () => setCurrentPage('login');
-  const goToRegister = () => setCurrentPage('register');
+  const goToLogin = () => {
+    setIsLoginOpen(true);
+    setIsRegisterOpen(false); // Diğerini kapat
+  };
+
+  const goToRegister = () => {
+    setIsRegisterOpen(true);
+    setIsLoginOpen(false); // Diğerini kapat
+  };
+
+  const closeForms = () => {
+    setIsLoginOpen(false);
+    setIsRegisterOpen(false);
+  };
 
   return (
     <div className="page-container">
-      {/* Navbar bölümü */}
+      {/* Navbar */}
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <a className="navbar-brand mx-auto" href="#home">CRM Sistemi</a>
         <div className="collapse navbar-collapse">
           <ul className="navbar-nav ml-auto mx-auto">
             <li className="nav-item">
-              <a className="nav-link" href="#home" onClick={goToHome}>Ana Sayfa</a>
+              <Link className="nav-link" to="home" smooth={true} duration={500}>Ana Sayfa</Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#about" onClick={goToAbout}>Hakkımızda</a>
+              <Link className="nav-link" to="about" smooth={true} duration={500}>Hakkımızda</Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#contact" onClick={goToContact}>İletişim</a>
+              <Link className="nav-link" to="contact" smooth={true} duration={500}>İletişim</Link>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="#" onClick={goToLogin}>Giriş Yap</a>
@@ -39,34 +53,41 @@ const App = () => {
         </div>
       </nav>
 
-      {/* Sayfa İçeriği */}
+      {/* İçerik */}
       <div className="content">
-        {currentPage === 'home' && (
-          <div>
-            <h2>Ana Sayfa</h2>
-            <p>Burada ana sayfa içeriği olacak.</p>
+        <Element name="home">
+          {currentPage === 'home' && <HomePage />}
+        </Element>
+
+        <Element name="about">
+          <About />
+        </Element>
+        <Element name="contact">
+          <Contact />
+        </Element>
+
+        {/* Form Kutuları */}
+        {isLoginOpen && (
+          <div className="form-popup-box">
+            <button className="close-btn" onClick={closeForms}>X</button>
+            <LoginPage goToRegister={goToRegister} />
           </div>
         )}
 
-        {currentPage === 'about' && (
-          <div>
-            <h2>Hakkımızda</h2>
-            <p>Burada hakkımızda bölümü olacak.</p>
+        {isRegisterOpen && (
+          <div className="form-popup-box">
+            <button className="close-btn" onClick={closeForms}>X</button>
+            <RegisterPage goToLogin={goToLogin} />
           </div>
         )}
-
-        {currentPage === 'contact' && (
-          <div>
-            <h2>İletişim</h2>
-            <p>Burada iletişim bölümü olacak.</p>
-          </div>
-        )}
-
-        {currentPage === 'login' && <LoginPage goToRegister={goToRegister} />}
-        {currentPage === 'register' && <RegisterPage goToLogin={goToLogin} />}
       </div>
+
+      {/* Footer */}
+      <footer className="footer bg-dark">
+        <p className="text-center text-white">&copy; 2025 CRM Support. Tüm hakları saklıdır.</p>
+      </footer>
     </div>
   );
-}
+};
 
 export default App;

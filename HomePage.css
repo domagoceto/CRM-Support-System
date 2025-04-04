@@ -1,0 +1,92 @@
+/* Genel gövde stili */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #fff5f2;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Ana sayfa kapsayıcı */
+  .homepage {
+    text-align: center;
+  }
+  
+  /* Navbar */
+  .navbar {
+    background-color: tomato;
+    padding: 1rem 2rem;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .navbar .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .navbar nav a {
+    color: white;
+    margin-left: 20px;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  
+  .navbar nav a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Hero Alanı */
+  .hero {
+    padding: 80px 20px;
+    background-color: #ffe5dc;
+    color: tomato;
+  }
+  
+  .hero h1 {
+    font-size: 2.8rem;
+    margin-bottom: 20px;
+  }
+  
+  .hero p {
+    font-size: 1.2rem;
+    color: #333;
+  }
+  
+  /* Bölümler */
+  .section {
+    padding: 60px 20px;
+  }
+  
+  .section:nth-child(even) {
+    background-color: #fff;
+  }
+  
+  .section:nth-child(odd) {
+    background-color: #fdf1ee;
+  }
+  
+  .section h2 {
+    color: tomato;
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .section p {
+    font-size: 1.1rem;
+    color: #444;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  /* Footer */
+  footer {
+    background-color: tomato;
+    color: white;
+    padding: 20px;
+    font-size: 0.9rem;
+    text-align: center;
+  }
+  

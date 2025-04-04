@@ -1,80 +1,22 @@
-/* Kayıt Ol sayfası arka planı */
-.register-page-container {
-    background-color: #FF6347; /* Tomato kırmızımsı turuncu renk */
-    min-height: 100vh; /* Sayfanın tamamını kaplaması için */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white; /* Yazı rengini beyaz yaparak kontrastı artırıyoruz */
-}
-
-/* Kayıt formunun input ve butonlarının bulunduğu alan */
-.register-form {
-    background-color: white; /* Formun arka planı beyaz */
-    padding: 30px; /* Formun iç kenar boşluğu */
-    border-radius: 8px; /* Yumuşak köşeler */
-    width: 100%; /* Genişlik %100 */
-    max-width: 500px; /* Maksimum genişlik sınırı */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Hafif gölge */
-}
-
-/* Form başlıkları için stil */
+/* Üstteki başlık: Kayıt Ol */
 .register-form h3 {
-    color: #FF6347; /* Başlıkların rengini turuncu yapıyoruz */
-    text-align: center;
-    font-size: 24px; /* Başlık boyutunu büyütüyoruz */
-    margin-bottom: 20px;
-}
-
-/* Form elemanları için stil */
-.form-control {
-    margin-bottom: 15px; /* Inputlar arasındaki boşluk */
-    border-radius: 4px; /* Yumuşak köşeler */
-}
-
-/* Butonların stilini ayarlıyoruz */
-.btn {
-    background-color: #FF6347; /* Buton rengini aynı kırmızı yapmak için */
-    border-color: #FF6347;
     color: white;
-}
-
-.btn:hover {
-    background-color: #e55347; /* Hover durumu için biraz daha koyu renk */
-}
-
-/* Label ve input arasındaki boşluğu ayarlıyoruz */
-.form-label {
-    font-size: 14px;
-}
-
-/* Input elemanlarının genişliğini ayarlıyoruz */
-input[type="text"],
-input[type="email"],
-input[type="tel"],
-input[type="password"] {
-    width: 100%; /* Genişlik %100 */
-    padding: 10px; /* Padding */
-    font-size: 16px;
-}
-
-/* Kayıt formunun altındaki metin */
-.text-center {
-    text-align: center;
-    margin-top: 15px;
-}
-
-/* Kayıt formunun altındaki bağlantı */
-a {
-    color: #FF6347;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-/* Giriş Yap metni ile Kayıt Ol butonu arasındaki boşluk */
-.register-form p {
-    margin-top: 20px; /* Giriş Yap metni ile buton arasına ekstra boşluk ekleyelim */
-}
+  }
+  
+  /* Kayıt Ol butonu: arka plan beyaz, yazı rengi tomato */
+  .register-form .btn {
+    background-color: white;
+    color: tomato;
+    border: none;
+  }
+  
+  /* "Giriş Yap" linki beyaz */
+  .register-form p a {
+    color: white;
+  }
+  
+  /* Input'ların üzerindeki label yazılarını beyaz yap */
+  .register-form .form-label {
+    color: white;
+  }
+  

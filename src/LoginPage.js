@@ -48,7 +48,7 @@ const LoginPage = () => {
               placeholder="Şifrenizi girin"
             />
           </div>
-          <button type="submit" className="btn btn-primary w-100">Giriş Yap</button>
+          <button type="submit" className="btn w-100">Giriş Yap</button>
         </form>
         <p>
           Henüz hesabınız yok mu? <a href="/register">Kayıt Ol</a>
