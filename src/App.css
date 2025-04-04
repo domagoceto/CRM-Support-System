@@ -3,26 +3,27 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #FF6347;
+  background-color: white;
   padding: 30px;
   border-radius: 10px;
   width: 90%;
   max-width: 400px;
   z-index: 9999; /* Diğer her şeyin üzerinde olsun */
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  
 }
 
 .close-btn {
   position: absolute;
   top: 10px;
   right: 10px;
-  background: white;
-  color: #FF6347;
+  background: tomato;
+  color: white;
   padding: 5px 10px;
   border-radius: 50%;
   font-weight: bold;
   cursor: pointer;
   z-index: 10000;
+  border: none; /* Kenar çizgilerini kaldırıyoruz */
 }
 
 .navbar-nav .nav-link {
@@ -32,5 +33,25 @@
 
 .navbar-nav .nav-link:hover {
   text-decoration: underline;
-  color: #ffc107;
+  color: tomato;
 }
+
+/* Sayfa konteynerini flexbox olarak ayarlayın */
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Sayfa yüksekliğini en az ekran boyutu kadar yap */
+}
+
+/* Footer'ı en altta sabitlemek için */
+.footer {
+  margin-top: auto; /* Sayfa içeriği yukarı kayarken footer en alta gider */
+  background-color: #343a40; /* Koyu renk arka plan */
+  padding: 10px 0; /* Padding ekleyin */
+}
+
+.footer p {
+  margin: 0;
+  color: white; /* Yazı rengini beyaz yapın */
+}
+

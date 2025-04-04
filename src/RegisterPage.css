@@ -1,22 +1,22 @@
 /* Üstteki başlık: Kayıt Ol */
 .register-form h3 {
-    color: white;
+    color: tomato;
   }
   
   /* Kayıt Ol butonu: arka plan beyaz, yazı rengi tomato */
   .register-form .btn {
-    background-color: white;
-    color: tomato;
+    background-color: tomato;
+    color: white;
     border: none;
   }
   
   /* "Giriş Yap" linki beyaz */
   .register-form p a {
-    color: white;
+    color: tomato;
   }
   
   /* Input'ların üzerindeki label yazılarını beyaz yap */
   .register-form .form-label {
-    color: white;
+    color: tomato;
   }
   

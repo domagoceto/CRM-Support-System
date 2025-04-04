@@ -1,22 +1,22 @@
 /* Üstteki başlık: Giriş Yap */
 .login-form h3 {
-    color: white;
+    color: tomato;
   }
   
   /* Giriş Yap butonu: arka plan beyaz, yazı rengi tomato */
   .login-form .btn {
-    background-color: white;
-    color: tomato;
+    background-color: tomato;
+    color: white;
     border: none;
   }
   
   /* "Kayıt Ol" linki beyaz */
   .login-form p a {
-    color: white;
+    color: tomato;
   }
   
   /* Input'ların üzerindeki label yazılarını beyaz yap */
   .login-form .form-label {
-    color: white;
+    color: tomato;
   }
   

@@ -1,4 +1,5 @@
 import React from 'react';
+import './HomePage.css';
 
 const HomePage = () => {
   return (
@@ -6,10 +7,6 @@ const HomePage = () => {
       <header className="hero-section">
         <h1>CRM Support Sistemi</h1>
         <p>IT firmalarına lisans sattığınız müşterilerle kolay destek yönetimi</p>
-        <div className="hero-buttons">
-          <button className="btn">Kayıt Ol</button>
-          <button className="btn">Giriş Yap</button>
-        </div>
       </header>
 
       <section className="features-section">
@@ -34,3 +31,4 @@ const HomePage = () => {
 };
 
 export default HomePage;
+

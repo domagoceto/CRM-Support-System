@@ -1,0 +1,17 @@
+.about-section {
+  background-color: white; /* Arka planı tomato yap */
+  color: tomato; /* Yazı rengini beyaz yap */
+  padding: 40px 20px; /* Üst ve alt boşlukları artırdım, sağ ve soldan da biraz boşluk bırakıyorum */
+  text-align: center;
+  width: 100%;
+  margin-top: 40px; /* Diğer bölümlerle arasında boşluk bırakmak için */
+}
+
+.about-section h2 {
+  margin-bottom: 20px;
+}
+
+.about-section p {
+  font-size: 16px;
+  line-height: 1.5;
+}
