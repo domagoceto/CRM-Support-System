@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // useNavigate import edildi
 import './LoginPage.css';
 
-const LoginPage = () => {
+const LoginPage = ({ setUser }) => {
   const [formData, setFormData] = useState({
     email: '',
     password: ''
   });
+
+  const navigate = useNavigate(); // useNavigate hook'u tanımlandı
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -13,8 +16,17 @@ const LoginPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Giriş Bilgileri:', formData);
-    alert('Giriş başarılı!');
+    
+    // Simüle edilmiş login işlemi
+    const userData = {
+      name: 'Kullanıcı Adı',
+      surname: 'Kullanıcı Soyadı',
+      email: formData.email
+    };
+
+    // Giriş başarılı ise
+    setUser(userData); // Kullanıcı bilgisini ayarlıyoruz
+    navigate('/UserPanel'); // Başarılı giriş sonrası kullanıcı paneline yönlendiriyoruz
   };
 
   return (
@@ -50,9 +62,6 @@ const LoginPage = () => {
           </div>
           <button type="submit" className="btn w-100">Giriş Yap</button>
         </form>
-        <p>
-          Henüz hesabınız yok mu? <a href="/register">Kayıt Ol</a>
-        </p>
       </div>
     </div>
   );

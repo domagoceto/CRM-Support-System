@@ -1,15 +1,14 @@
+// RegisterPage.js
 import React, { useState } from 'react';
 import './RegisterPage.css';
 
-const RegisterPage = () => {
+const RegisterPage = ({ goToLogin }) => {
   const [formData, setFormData] = useState({
-    name: '',
-    surname: '',
-    phone: '',
     email: '',
     password: '',
     confirmPassword: ''
   });
+  const [isRegistered, setIsRegistered] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -17,12 +16,15 @@ const RegisterPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (formData.password !== formData.confirmPassword) {
-      alert('Şifreler uyuşmuyor!');
-      return;
+
+    if (formData.password === formData.confirmPassword) {
+      // Simüle edilmiş kayıt işlemi
+      setIsRegistered(true);
+      alert("Kayıt başarılı!");
+      goToLogin();
+    } else {
+      alert("Şifreler uyuşmuyor!");
     }
-    console.log('Kayıt Bilgileri:', formData);
-    alert('Kayıt başarılı!');
   };
 
   return (
@@ -30,45 +32,6 @@ const RegisterPage = () => {
       <div className="register-form">
         <h3 className="text-center mb-4">Kayıt Ol</h3>
         <form onSubmit={handleSubmit}>
-          <div className="mb-3">
-            <label htmlFor="name" className="form-label">Ad</label>
-            <input
-              type="text"
-              className="form-control"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-              placeholder="Adınızı girin"
-            />
-          </div>
-          <div className="mb-3">
-            <label htmlFor="surname" className="form-label">Soyad</label>
-            <input
-              type="text"
-              className="form-control"
-              id="surname"
-              name="surname"
-              value={formData.surname}
-              onChange={handleChange}
-              required
-              placeholder="Soyadınızı girin"
-            />
-          </div>
-          <div className="mb-3">
-            <label htmlFor="phone" className="form-label">Telefon Numarası</label>
-            <input
-              type="tel"
-              className="form-control"
-              id="phone"
-              name="phone"
-              value={formData.phone}
-              onChange={handleChange}
-              required
-              placeholder="Telefon numaranızı girin"
-            />
-          </div>
           <div className="mb-3">
             <label htmlFor="email" className="form-label">Email Adresi</label>
             <input
@@ -92,11 +55,11 @@ const RegisterPage = () => {
               value={formData.password}
               onChange={handleChange}
               required
-              placeholder="Şifrenizi oluşturun"
+              placeholder="Şifrenizi girin"
             />
           </div>
           <div className="mb-3">
-            <label htmlFor="confirmPassword" className="form-label">Şifreyi Onayla</label>
+            <label htmlFor="confirmPassword" className="form-label">Şifreyi Tekrar Girin</label>
             <input
               type="password"
               className="form-control"
@@ -108,10 +71,10 @@ const RegisterPage = () => {
               placeholder="Şifrenizi tekrar girin"
             />
           </div>
-          <button type="submit" className="btn btn-primary w-100">Kayıt Ol</button>
+          <button type="submit" className="btn w-100">Kayıt Ol</button>
         </form>
         <p>
-          Zaten bir hesabınız var mı? <a href="/login">Giriş Yap</a>
+          Zaten hesabınız var mı? <button onClick={goToLogin}>Giriş Yap</button>
         </p>
       </div>
     </div>

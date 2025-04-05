@@ -26,6 +26,14 @@
   border: none; /* Kenar çizgilerini kaldırıyoruz */
 }
 
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000; /* Navbar'ın diğer içeriklerin üstünde olmasını sağlar */
+}
+
 .navbar-nav .nav-link {
   cursor: pointer;
   color: white;
