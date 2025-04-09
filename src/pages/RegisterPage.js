@@ -1,89 +1,44 @@
 import React, { useState } from 'react';
-import axios from 'axios';
-import '../styles/RegisterPage.css';
+import { useNavigate } from 'react-router-dom';
 
-const RegisterPage = ({ goToLogin }) => {
-  const [name, setName] = useState('');
-  const [surname, setSurname] = useState('');
-  const [phone, setPhone] = useState('');
-  const [email, setEmail] = useState('');
-  const [key, setKey] = useState('');
-  const [password, setPassword] = useState('');
-  const [passwordConfirmation, setPasswordConfirmation] = useState('');
+const RegisterPage = ({ openLogin }) => {
+  const [formData, setFormData] = useState({ name: '', surname: '', email: '', password: '', passwordConfirmation: '' });
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
+  const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
   const handleRegister = async (e) => {
     e.preventDefault();
-
-    if (password !== passwordConfirmation) {
-      setError('Şifreler eşleşmiyor.');
+    if (formData.password !== formData.passwordConfirmation) {
+      setError('Şifreler eşleşmiyor');
       return;
     }
-
     try {
-      const userData = {
-        name,
-        surname,
-        phone,
-        email,
-        key,
-        password,
-      };
-
-      await axios.post('/api/kullanici/kayit', userData);
-      alert('Kayıt başarılı!');
-      goToLogin(); // Kayıttan sonra giriş formuna geç
+      // Kayıt işlemi yapılır (API isteği örneği)
+      // await axios.post('/api/kullanici/kayit', formData);
+      navigate('/login');
     } catch (err) {
-      setError('Bir hata oluştu. Lütfen tekrar deneyin.');
+      setError('Bir hata oluştu');
     }
   };
 
   return (
     <div className="register-container">
-      <h2>Kayıt Ol</h2>
-      {error && <div className="error">{error}</div>}
-
       <form onSubmit={handleRegister}>
-        <div className="input-group">
-          <label>Ad</label>
-          <input type="text" value={name} onChange={(e) => setName(e.target.value)} required />
-        </div>
-        <div className="input-group">
-          <label>Soyad</label>
-          <input type="text" value={surname} onChange={(e) => setSurname(e.target.value)} required />
-        </div>
-        <div className="input-group">
-          <label>Telefon</label>
-          <input type="text" value={phone} onChange={(e) => setPhone(e.target.value)} required />
-        </div>
-        <div className="input-group">
-          <label>Email</label>
-          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-        </div>
-        <div className="input-group">
-          <label>Key (Opsiyonel)</label>
-          <input type="text" value={key} onChange={(e) => setKey(e.target.value)} />
-        </div>
-        <div className="input-group">
-          <label>Şifre</label>
-          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-        </div>
-        <div className="input-group">
-          <label>Şifre Tekrarı</label>
-          <input type="password" value={passwordConfirmation} onChange={(e) => setPasswordConfirmation(e.target.value)} required />
-        </div>
-        <button type="submit" className="register-btn">Kayıt Ol</button>
+        <input type="text" name="name" value={formData.name} onChange={handleChange} required />
+        <input type="text" name="surname" value={formData.surname} onChange={handleChange} required />
+        <input type="email" name="email" value={formData.email} onChange={handleChange} required />
+        <input type="password" name="password" value={formData.password} onChange={handleChange} required />
+        <input type="password" name="passwordConfirmation" value={formData.passwordConfirmation} onChange={handleChange} required />
+        <button type="submit">Kayıt Ol</button>
       </form>
-
-      <p style={{ textAlign: 'center', marginTop: '12px' }}>
+      <p>
         Zaten hesabınız var mı?{' '}
-        <a href="#" onClick={(e) => {
-          e.preventDefault();
-          goToLogin(); // Giriş formuna geç
-        }}>
-          Giriş yap
+        <a href="#" onClick={(e) => { e.preventDefault(); openLogin(); }}>
+          Giriş Yap
         </a>
       </p>
+      {error && <div>{error}</div>}
     </div>
   );
 };

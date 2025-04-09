@@ -1,23 +1,23 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import HomePage from './pages/HomePage';
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
 import Main from './sections/Main';
 import About from './sections/About';
 import Contact from './sections/Contact';
-import LoginPage from './pages/LoginPage';
-import RegisterPage from './pages/RegisterPage';
 
 const App = () => {
+  const [user, setUser] = useState(null);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isRegisterOpen, setIsRegisterOpen] = useState(false);
-  const [user, setUser] = useState(null);
 
-  const goToLogin = () => {
+  const openLogin = () => {
     setIsLoginOpen(true);
     setIsRegisterOpen(false);
   };
 
-  const goToRegister = () => {
+  const openRegister = () => {
     setIsRegisterOpen(true);
     setIsLoginOpen(false);
   };
@@ -28,28 +28,26 @@ const App = () => {
   };
 
   return (
-    <Router>
+    <Router> {/* Router'ı buraya ekledik */}
       <Routes>
-        <Route 
-          path="/" 
-          element={<HomePage goToLogin={goToLogin} goToRegister={goToRegister} />} 
-        />
+        <Route path="/" element={<HomePage openLogin={openLogin} openRegister={openRegister} />} />
         <Route path="/main" element={<Main />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
 
+      {/* Login ve Register formlarını modal olarak göster */}
       {isLoginOpen && (
-        <div className="form-popup-box">
-          <button className="close-btn" onClick={closeForms}>X</button>
-          <LoginPage setUser={setUser} goToRegister={goToRegister} />
+        <div className="form-popup">
+          <button onClick={closeForms} className="close-btn">X</button>
+          <LoginPage setUser={setUser} openRegister={openRegister} />
         </div>
       )}
 
       {isRegisterOpen && (
-        <div className="form-popup-box">
-          <button className="close-btn" onClick={closeForms}>X</button>
-          <RegisterPage goToLogin={goToLogin} />
+        <div className="form-popup">
+          <button onClick={closeForms} className="close-btn">X</button>
+          <RegisterPage openLogin={openLogin} />
         </div>
       )}
     </Router>
