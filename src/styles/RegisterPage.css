@@ -1,116 +1,112 @@
-/* Genel form konteyneri (Register) */
+/* Genel Sayfa Stili */
 .register-container {
+  background-color: white; /* Arka plan beyaz */
   width: 100%;
-  max-width: 300px; /* Formun genişliğini sınırlıyoruz */
-  margin: 25px auto;
+  max-width: 400px;
+  margin: 50px auto; /* Sayfada ortalamak için */
   padding: 20px;
-  background-color: white;
-  border-radius: 10px;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden; /* İçerik dışarı taşarsa gizle */
-  max-height: 70vh;
-  overflow-y: auto;
+  border-radius: 8px;
+  overflow-y: auto; /* Kaydırma çubuğunu aktif eder */
+  max-height: 600px; /* Sayfa yüksekliğini sınırladık */
 }
 
 /* Başlık */
-.register-container h2 {
+.register-container h1 {
+  text-align: center;
+  margin-bottom: 20px;
   color: tomato;
-  text-align: center;
-  margin-bottom: 15px; /* Başlık altındaki boşluğu kısaltalım */
+  font-size: 24px;
 }
 
-/* Hata mesajı */
-.error {
-  color: red;
-  text-align: center;
-  margin-bottom: 10px; /* Hata mesajının altındaki boşluğu kısaltalım */
+/* Input Grubu ve Etiketler */
+.input-group {
+  margin-bottom: 15px;
 }
 
-.register-container .input-group input {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  font-size: 14px;
-  color: #333; /* Kullanıcının yazdığı metin */
-  box-sizing: border-box;
-}
-
-
-/* Form inputları */
-.register-container .input-group {
-  margin-bottom: 12px; /* Inputlar arasındaki boşluğu azaltalım */
-}
-
-.register-container .input-group label {
+.input-group label {
   display: block;
-  color: tomato;
+  font-weight: bold;
   margin-bottom: 5px;
+  font-size: 14px;
 }
 
-.register-container .input-group input {
+/* Input Alanları */
+.register-container input {
   width: 100%;
-  padding: 8px; /* Daha dar inputlar */
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  font-size: 14px; /* Küçük font boyutu */
-  box-sizing: border-box;
+  padding: 10px;
+  margin-bottom: 5px;
+  border: 1px solid #ddd; /* Gri bir kenarlık ekledik */
+  border-radius: 4px;
+  font-size: 14px;
+  transition: border-color 0.3s ease-in-out;
+  background-color: #f7f1f1; /* Hafif gri arka plan ekledik */
 }
 
-/* Input focus */
-.register-container .input-group input:focus {
+/* Input focus durumunda kenarlık rengi değişir */
+.register-container input:focus {
   border-color: tomato;
-  outline: none;
+  outline: none; /* Fokus sırasında outline'ı kaldır */
 }
 
-/* Kayıt Ol butonu */
-.register-btn {
+/* Placeholder Metni */
+.register-container input::placeholder {
+  color: #aaa;
+  font-style: italic;
+}
+
+/* Key (Opsiyonel) alanının stilini farklı yap */
+.register-container input[name="key"]::placeholder {
+  color: #999; /* Opsiyonel alan için daha açık gri */
+}
+
+/* Kayıt Ol Butonu */
+.register-container button {
   width: 100%;
-  padding: 10px; /* Buton yüksekliğini kısaltalım */
+  padding: 12px;
   background-color: tomato;
   color: white;
-  font-size: 16px;
   border: none;
-  border-radius: 5px;
+  border-radius: 4px;
+  font-size: 16px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease-in-out;
 }
 
-/* Kayıt Ol butonunun hover efekti */
-.register-btn:hover {
+/* Buton üzerine gelindiğinde renk değişimi */
+.register-container button:hover {
   background-color: red;
 }
 
-/* "Giriş Yap" linki */
-.register-container p a {
-  color: tomato;
-  text-decoration: none;
+/* Link Stili */
+.register-container p {
+  text-align: center;
+  margin-top: 10px;
 }
 
-.register-container p a:hover {
+.register-container a {
+  color: tomato;
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.register-container a:hover {
   text-decoration: underline;
 }
 
-.close-btn {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background-color: transparent;
-  border: none;
-  font-size: 24px;
-  color: white;
-  cursor: pointer;
-  z-index: 10000;
-  background-color: tomato;
-}
-
+/* "Zaten hesabınız var mı?" yazısının stilini açma */
 .register-container p {
-  color: #555; /* Gri veya siyah tonlarında belirgin bir renk */
-  font-size: 14px;
-  margin-top: 20px;
-  text-align: center;
+  color: #666; /* Daha açık gri ton */
 }
 
+/* Hata Mesajı */
+.register-container div {
+  color: tomato;
+  text-align: center;
+  margin-top: 15px;
+  font-size: 14px;
+}
 
+label {
+  color: tomato;
+}

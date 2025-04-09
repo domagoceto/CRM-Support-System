@@ -1,15 +1,15 @@
-.form-popup-box {
-  position: fixed; /* Sayfanın ortasında sabit dursun */
+.form-popup {
+  position: fixed; /* Sayfanın ortasında sabit durmasını sağlar */
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); /* Tam ortada görünmesini sağlar */
   background-color: white;
   padding: 30px;
   border-radius: 10px;
   width: 90%;
   max-width: 400px;
-  z-index: 9999; /* Diğer her şeyin üzerinde olsun */
-  
+  z-index: 9999; /* Diğer öğelerin üzerinde olmasını sağlar */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Kutunun etrafında gölge ekler */
 }
 
 .close-btn {
@@ -23,8 +23,9 @@
   font-weight: bold;
   cursor: pointer;
   z-index: 10000;
-  border: none; /* Kenar çizgilerini kaldırıyoruz */
+  border: none;
 }
+
 
 .navbar-nav .nav-link {
   cursor: pointer;
@@ -46,7 +47,7 @@
 /* Footer'ı en altta sabitlemek için */
 .footer {
   margin-top: auto; /* Sayfa içeriği yukarı kayarken footer en alta gider */
-  background-color: #343a40; /* Koyu renk arka plan */
+
   padding: 10px 0; /* Padding ekleyin */
 }
 
