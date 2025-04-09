@@ -10,7 +10,7 @@ import RegisterPage from './pages/RegisterPage';
 const App = () => {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isRegisterOpen, setIsRegisterOpen] = useState(false);
-  const [user, setUser] = useState(null); // Kullanıcıyı tutmak için
+  const [user, setUser] = useState(null);
 
   const goToLogin = () => {
     setIsLoginOpen(true);
@@ -30,7 +30,10 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<HomePage goToLogin={goToLogin} goToRegister={goToRegister} />} />
+        <Route 
+          path="/" 
+          element={<HomePage goToLogin={goToLogin} goToRegister={goToRegister} />} 
+        />
         <Route path="/main" element={<Main />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />

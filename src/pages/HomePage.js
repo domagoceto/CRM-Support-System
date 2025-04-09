@@ -9,12 +9,12 @@ import '../styles/HomePage.css';
 const HomePage = ({ goToLogin, goToRegister }) => {
   return (
     <div className="home-container">
-      <Navbar /> {}
+      <Navbar />
       
       <Main id="main" />
       <About id="about" />
       <Contact id="contact" />
-      
+
       <Footer />
     </div>
   );
