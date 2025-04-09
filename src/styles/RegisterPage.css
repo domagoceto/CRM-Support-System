@@ -1,0 +1,116 @@
+/* Genel form konteyneri (Register) */
+.register-container {
+  width: 100%;
+  max-width: 300px; /* Formun genişliğini sınırlıyoruz */
+  margin: 25px auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* İçerik dışarı taşarsa gizle */
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+/* Başlık */
+.register-container h2 {
+  color: tomato;
+  text-align: center;
+  margin-bottom: 15px; /* Başlık altındaki boşluğu kısaltalım */
+}
+
+/* Hata mesajı */
+.error {
+  color: red;
+  text-align: center;
+  margin-bottom: 10px; /* Hata mesajının altındaki boşluğu kısaltalım */
+}
+
+.register-container .input-group input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+  color: #333; /* Kullanıcının yazdığı metin */
+  box-sizing: border-box;
+}
+
+
+/* Form inputları */
+.register-container .input-group {
+  margin-bottom: 12px; /* Inputlar arasındaki boşluğu azaltalım */
+}
+
+.register-container .input-group label {
+  display: block;
+  color: tomato;
+  margin-bottom: 5px;
+}
+
+.register-container .input-group input {
+  width: 100%;
+  padding: 8px; /* Daha dar inputlar */
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px; /* Küçük font boyutu */
+  box-sizing: border-box;
+}
+
+/* Input focus */
+.register-container .input-group input:focus {
+  border-color: tomato;
+  outline: none;
+}
+
+/* Kayıt Ol butonu */
+.register-btn {
+  width: 100%;
+  padding: 10px; /* Buton yüksekliğini kısaltalım */
+  background-color: tomato;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Kayıt Ol butonunun hover efekti */
+.register-btn:hover {
+  background-color: red;
+}
+
+/* "Giriş Yap" linki */
+.register-container p a {
+  color: tomato;
+  text-decoration: none;
+}
+
+.register-container p a:hover {
+  text-decoration: underline;
+}
+
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: transparent;
+  border: none;
+  font-size: 24px;
+  color: white;
+  cursor: pointer;
+  z-index: 10000;
+  background-color: tomato;
+}
+
+.register-container p {
+  color: #555; /* Gri veya siyah tonlarında belirgin bir renk */
+  font-size: 14px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+

@@ -1,14 +1,17 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // useNavigate import edildi
-import './LoginPage.css';
 
-const LoginPage = ({ setUser }) => {
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import '../styles/LoginPage.css';
+
+console.log('goToRegister typeof:', typeof goToRegister);
+
+const LoginPage = ({ setUser, goToRegister }) => {
   const [formData, setFormData] = useState({
     email: '',
     password: ''
   });
 
-  const navigate = useNavigate(); // useNavigate hook'u tanımlandı
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -16,17 +19,16 @@ const LoginPage = ({ setUser }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
-    // Simüle edilmiş login işlemi
+
+    // Simülasyon amaçlı giriş işlemi
     const userData = {
       name: 'Kullanıcı Adı',
       surname: 'Kullanıcı Soyadı',
       email: formData.email
     };
 
-    // Giriş başarılı ise
-    setUser(userData); // Kullanıcı bilgisini ayarlıyoruz
-    navigate('/UserPanel'); // Başarılı giriş sonrası kullanıcı paneline yönlendiriyoruz
+    setUser(userData);
+    navigate('/main');
   };
 
   return (
@@ -62,6 +64,16 @@ const LoginPage = ({ setUser }) => {
           </div>
           <button type="submit" className="btn w-100">Giriş Yap</button>
         </form>
+
+        <p className="text-center mt-3">
+          Hesabınız yok mu?{' '}
+          <a href="#" onClick={(e) => {
+            e.preventDefault();
+            goToRegister(); // Register formunu aç
+          }}>
+            Kayıt ol
+          </a>
+        </p>
       </div>
     </div>
   );

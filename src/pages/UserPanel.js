@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './UserPanel.css'; // CSS dosyasını import ediyoruz
+import './styles/UserPanel.css'; // CSS dosyasını import ediyoruz
 import axios from 'axios'; // axios kullanacağız
 import { useNavigate } from 'react-router-dom'; // useNavigate kullanacağız
 

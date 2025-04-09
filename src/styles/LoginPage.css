@@ -1,0 +1,87 @@
+/* Genel form konteyneri (Login) */
+.login-form {
+  width: 100%;
+  max-width: 400px; /* Formun maksimum genişliğini 400px olarak belirledik */
+  margin: 0 auto; /* Formu sayfa ortasında yerleştirdik */
+  padding: 30px; 
+  border-radius: 10px; /* Formun köşelerini yuvarladık */
+
+}
+
+/* Üstteki başlık: Giriş Yap */
+.login-form h3 {
+  color: tomato; /* Başlık rengini belirledik */
+  font-size: 24px; /* Başlık boyutunu biraz daha büyük yaptık */
+  text-align: center; /* Başlığı ortaladık */
+  margin-bottom: 20px; /* Başlık ile form arasına boşluk ekledik */
+}
+
+/* Giriş Yap butonu: arka plan beyaz, yazı rengi tomato */
+.login-form .btn {
+  background-color: tomato; /* Butonun arka planını kırmızı yapıyoruz */
+  color: white; /* Yazı rengini beyaz yapıyoruz */
+  border: none; /* Kenarlıkları kaldırdık */
+  padding: 10px 20px; /* Butona biraz iç boşluk ekledik */
+  border-radius: 5px; /* Butonun köşelerini yuvarladık */
+  cursor: pointer; /* Butona fareyle üzerine gelindiğinde tıklanabilir simgesi */
+  font-size: 16px; /* Buton yazı boyutunu ayarladık */
+  transition: background-color 0.3s; /* Buton üzerine gelince renk değişimini yumuşatmak için geçiş efekti */
+}
+
+/* Buton üzerine gelindiğinde rengin değişmesi */
+.login-form .btn:hover {
+  background-color: red; /* Butonun hover (üzerine gelindiğinde) rengini değiştirdik */
+}
+
+/* "Kayıt Ol" linki beyaz */
+.login-form p a {
+  color: tomato; /* Link rengini kırmızı yapıyoruz */
+  text-decoration: none; /* Link alt çizgisini kaldırdık */
+  font-size: 14px; /* Link font boyutunu ayarladık */
+}
+
+.login-form p a:hover {
+  text-decoration: underline; /* Link üzerine gelindiğinde altı çizili olacak */
+}
+
+/* Input'ların üzerindeki label yazılarını beyaz yap */
+.login-form .form-label {
+  color: tomato; /* Label yazılarının rengini kırmızı yaptık */
+  font-size: 14px; /* Label yazılarının font boyutunu ayarladık */
+  margin-bottom: 5px; /* Label ile input arasına boşluk ekledik */
+}
+
+/* Input alanlarının stilini ayarlayalım */
+.login-form input[type="text"],
+.login-form input[type="password"] {
+  width: 100%; /* Input alanlarının genişliğini %100 yapıyoruz */
+  padding: 10px; /* İç boşluk ekledik */
+  margin-bottom: 15px; /* Her input alanı arasına boşluk ekledik */
+  border: 1px solid #ddd; /* Input alanlarına ince bir kenarlık ekledik */
+  border-radius: 5px; /* Input alanlarının köşelerini yuvarladık */
+  font-size: 14px; /* Input yazı boyutunu ayarladık */
+}
+
+.login-form input[type="text"]:focus,
+.login-form input[type="password"]:focus {
+  border-color: tomato; /* Input alanı seçildiğinde kenarlık rengini kırmızı yapıyoruz */
+  outline: none; /* Focus olduğunda kutunun etrafında ek bir outline olmaması için */
+}
+
+.kayit-link {
+  color: tomato;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.kayit-link:hover {
+  text-decoration: underline;
+}
+
+.login-form p {
+  margin-top: 20px;
+  font-size: 14px;
+  text-align: center;
+  color: #555;
+}
+

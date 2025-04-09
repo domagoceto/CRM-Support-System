@@ -1,0 +1,60 @@
+/* Navbar'ın tüm satırı kaplamasını sağlıyoruz */
+.navbar {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 10px 20px;
+  background-color: #333;
+  z-index: 1000;
+}
+
+/* Form popup'ı için stil */
+.form-popup-box {
+  position: fixed; /* Kutu ekranın üst kısmına sabitlenecek */
+  top: 50%; /* Yatayda ortalanması için */
+  left: 50%; /* Dikeyde ortalanması için */
+  transform: translate(-50%, -50%); /* Tam ortalama için */
+  background-color: #fff; /* Arka plan beyaz */
+  padding: 30px;
+  border-radius: 10px; /* Kutu köşelerini yuvarladık */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Kutu etrafında hafif gölge */
+  z-index: 1000; /* Çarpı işareti ve kutu üzerindeki diğer öğelerin önünde yer alacak */
+}
+
+/* Popup kutusunun kendisi */
+.form-content {
+  background-color: white; /* Şeffaf değil, beyaz arka plan */
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  position: relative; /* İçindeki öğelerin konumunu düzenleyebilmek için */
+}
+
+/* Çarpı işaretinin konumunu ayarlıyoruz */
+.close-btn {
+  position: absolute; /* Kendi yerini konumlandıracak */
+  top: 10px; /* Kutunun üst kısmına 10px mesafe */
+  right: 10px; /* Kutunun sağ kısmına 10px mesafe */
+  background-color: tomato; /* Çarpı işaretinin arka planı kırmızı */
+  color: white; /* Çarpı işaretinin rengi beyaz */
+  border: none; /* Kenarlık yok */
+  font-size: 20px; /* Çarpı işareti boyutunu ayarladık */
+  width: 30px; /* Yuvarlak çarpı işareti için genişlik */
+  height: 30px; /* Yuvarlak çarpı işareti için yükseklik */
+  border-radius: 50%; /* Yuvarlak hale getirmek için */
+  display: flex; /* İçindeki öğeyi ortalamak için */
+  align-items: center; /* Yatayda ortalama */
+  justify-content: center; /* Dikeyde ortalama */
+  cursor: pointer; /* Tıklanabilir hale getirdik */
+  z-index: 1050; /* Çarpı işaretinin kutunun üstünde olmasını sağladık */
+}
+
+/* Çarpı işaretine hover efekti */
+.close-btn:hover {
+  background-color: red; /* Hover efekti: Çarpı işaretinin arka plan rengi turuncu olacak */
+}
+
+.close-btn:focus {
+  outline: none; /* Focus olduğunda kutu kenarlığını kaldırdık */
+}

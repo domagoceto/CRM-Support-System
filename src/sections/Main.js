@@ -1,13 +1,13 @@
 import React from 'react';
-import './HomePage.css';
+import '../styles/Main.css';
 
-const HomePage = () => {
+const Main = () => {
   return (
     <div className="home-container">
-      <header className="hero-section">
+      <section className="hero-section">
         <h1>CRM Support Sistemi</h1>
         <p>IT firmalarına lisans sattığınız müşterilerle kolay destek yönetimi</p>
-      </header>
+      </section>
 
       <section className="features-section">
         <h2>Özellikler</h2>
@@ -30,5 +30,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
-
+export default Main;

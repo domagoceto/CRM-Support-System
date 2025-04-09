@@ -1,0 +1,63 @@
+.home-container {
+  background-color: tomato; /* Arka plan rengini tomato yap */
+  color: white; /* Yazı rengini beyaz yap */
+  min-height: 100vh; /* Sayfanın tamamını kapsasın */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-section {
+  text-align: center;
+  padding: 50px 20px; /* üst ve alt padding ekledim */
+  background-color: #d9571c; /* Daha koyu bir kırmızı tonunda arka plan */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* gölge efekti */
+}
+
+.hero-section h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.hero-section p {
+  font-size: 1.2rem;
+  margin-top: 0;
+}
+
+.features-section {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.features {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap; /* Daha küçük ekranlarda özelliklerin alt satıra inmesini sağlar */
+}
+
+.feature-box {
+  background: rgba(255, 255, 255, 0.1); /* Hafif beyaz bir arka plan */
+  padding: 20px;
+  border-radius: 8px;
+  width: 250px; /* Her kutunun genişliğini biraz artırdım */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hover efekti için animasyon */
+}
+
+.feature-box:hover {
+  transform: translateY(-5px); /* Hover efektiyle kutuyu yukarıya kaydır */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Hover ile gölge efekti */
+}
+
+.feature-box h3 {
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+}
+
+.feature-box p {
+  font-size: 1rem;
+  color: #e0e0e0; /* Yazıyı daha okunabilir yapmak için renk tonu ekledim */
+}
