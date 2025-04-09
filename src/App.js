@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import HomePage from './pages/HomePage';
@@ -11,6 +12,8 @@ import Contact from './sections/Contact';
 =======
 =======
 >>>>>>> parent of 09937cb (UserPanel)
+=======
+>>>>>>> parent of 09937cb (UserPanel)
 import './App.css';
 import React, { useState } from 'react';
 import { Link, Element } from 'react-scroll';
@@ -20,6 +23,9 @@ import HomePage from './HomePage';
 import About from './About';
 import Contact from './Contact';
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 09937cb (UserPanel)
+=======
 >>>>>>> parent of 09937cb (UserPanel)
 =======
 >>>>>>> parent of 09937cb (UserPanel)
@@ -45,6 +51,7 @@ const App = () => {
   };
 
   return (
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     <Router> {/* Router'ı buraya ekledik */}
@@ -123,6 +130,33 @@ const App = () => {
       </nav>
 
 >>>>>>> parent of 09937cb (UserPanel)
+=======
+    <div className="page-container">
+      {/* Navbar */}
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a className="navbar-brand mx-auto" href="#home">CRM Sistemi</a>
+        <div className="collapse navbar-collapse">
+          <ul className="navbar-nav ml-auto mx-auto">
+            <li className="nav-item">
+              <Link className="nav-link" to="home" smooth={true} duration={500}>Ana Sayfa</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="about" smooth={true} duration={500}>Hakkımızda</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="contact" smooth={true} duration={500}>İletişim</Link>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="#" onClick={goToLogin}>Giriş Yap</a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="#" onClick={goToRegister}>Kayıt Ol</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+>>>>>>> parent of 09937cb (UserPanel)
       {/* İçerik */}
       <div className="content">
         <Element name="home">
@@ -158,6 +192,9 @@ const App = () => {
       </footer>
     </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 09937cb (UserPanel)
+=======
 >>>>>>> parent of 09937cb (UserPanel)
 =======
 >>>>>>> parent of 09937cb (UserPanel)
