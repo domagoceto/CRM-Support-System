@@ -128,3 +128,28 @@ html {
   bottom: 0;
   width: 100%;
 }
+
+/* Hakkımızda Bölümü */
+#about {
+  width: 100%;  /* Tam genişlikte olacak */
+  padding: 40px;  /* İçerik için boşluk */
+  background-color: #f8f9fa;  /* Arka plan rengi */
+  border: 1px solid #ddd;  /* Kenarlık */
+  border-radius: 8px;  /* Köşe yuvarlama */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Gölgeleme efekti */
+  margin-bottom: 40px;  /* Alt boşluk */
+}
+
+/* Başlık */
+#about h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* İçerik */
+#about p {
+  font-size: 1.1rem;
+  color: #333;
+}
+

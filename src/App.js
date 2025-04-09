@@ -1,27 +1,24 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { Link } from 'react-scroll';  // react-scroll'dan Link bileşenini import ediyoruz
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
-import Main from './sections/Main';
-import About from './sections/About';
-import Contact from './sections/Contact';
 import './App.css';
 
 const App = () => {
-  const [currentPage, setCurrentPage] = useState('home');
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isRegisterOpen, setIsRegisterOpen] = useState(false);
-  const [user, setUser] = useState(null);  // Define user state
+  const [user, setUser] = useState(null);
 
   const openLogin = () => {
     setIsLoginOpen(true);
-    setIsRegisterOpen(false); // Close register form
+    setIsRegisterOpen(false);
   };
 
   const openRegister = () => {
     setIsRegisterOpen(true);
-    setIsLoginOpen(false); // Close login form
+    setIsLoginOpen(false);
   };
 
   const closeForms = () => {
@@ -37,13 +34,13 @@ const App = () => {
         <div className="collapse navbar-collapse">
           <ul className="navbar-nav ml-auto mx-auto">
             <li className="nav-item">
-              <a className="nav-link" href="#home">Ana Sayfa</a>
+              <Link className="nav-link" to="home" smooth={true} duration={500}>Ana Sayfa</Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#about">Hakkımızda</a>
+              <Link className="nav-link" to="about" smooth={true} duration={500}>Hakkımızda</Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#contact">İletişim</a>
+              <Link className="nav-link" to="contact" smooth={true} duration={500}>İletişim</Link>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="#" onClick={openLogin}>Giriş Yap</a>
@@ -55,15 +52,12 @@ const App = () => {
         </div>
       </nav>
 
-      {/* Routes */}
+      {/* Sayfa İçeriği */}
       <Routes>
         <Route path="/" element={<HomePage openLogin={openLogin} openRegister={openRegister} />} />
-        <Route path="/main" element={<Main />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
       </Routes>
 
-      {/* Login and Register forms */}
+      {/* Login ve Register Formları */}
       {isLoginOpen && (
         <div className="form-popup">
           <button onClick={closeForms} className="close-btn">X</button>
@@ -78,7 +72,7 @@ const App = () => {
         </div>
       )}
 
-      {/* Footer (Only in App.js, not in HomePage) */}
+      {/* Footer */}
       <footer className="footer bg-dark">
         <p className="text-center text-white">&copy; 2025 CRM Support. Tüm hakları saklıdır.</p>
       </footer>
