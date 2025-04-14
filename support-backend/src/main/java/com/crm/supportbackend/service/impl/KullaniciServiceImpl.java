@@ -60,7 +60,7 @@ public class KullaniciServiceImpl implements KullaniciService {
         return kullaniciRepository.save(kullanici);
     }
 
-   @Override
+    @Override
     public String login(KullaniciLoginDto dto) {
         // Kullanıcıyı email ile bul
         Kullanici kullanici = kullaniciRepository.findByEmail(dto.getEmail())
@@ -71,10 +71,21 @@ public class KullaniciServiceImpl implements KullaniciService {
             throw new RuntimeException("Yanlış şifre");
         }
 
-        // JWT token oluşturma işlemi burada yapılacak (Buna aşağıda geçeceğiz)
+        // JWT token oluşturma işlemi burada yapılacak
 
-        return "Başarılı giriş"; // Burada JWT döneceğiz.
+        return "Başarılı giriş"; // Başarılı giriş mesajını döndürüyoruz
     }
+
+
+
+
+    @Override
+    public Kullanici getKullaniciByEmail(String email) {
+        return kullaniciRepository.findByEmail(email)
+                .orElseThrow(() -> new UsernameNotFoundException("Kullanıcı bulunamadı"));
+    }
+
+
 
 
 }

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../styles/RegisterPage.css';
 
@@ -14,7 +13,7 @@ const RegisterPage = ({ openLogin }) => {
     phone: ''
   });
   const [error, setError] = useState('');
-  const navigate = useNavigate();
+  const [successMessage, setSuccessMessage] = useState(''); // Başarı mesajı state'i
 
   const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -27,25 +26,44 @@ const RegisterPage = ({ openLogin }) => {
     }
 
     // Key’e göre rol belirleme
-    let role = 'CUSTOMER'; // default
-    if (formData.key === 'support-key-123') {
-      role = 'SUPPORT';
-    } else if (formData.key === 'admin-key-456') {
-      role = 'ADMIN';
+    let role = ''; // default boş
+    let key = formData.key;
+
+    // Eğer key doğruysa, ilgili rolü atayın
+    if (formData.key === '123') {
+      role = '123';
+    } else if (formData.key === '789') {
+      role = '789';
+    } else {
+      role = '';
     }
+    
 
     const payload = {
-      ad: formData.name,
-      soyad: formData.surname,
+      name: formData.name,
+      surname: formData.surname,
       email: formData.email,
-      sifre: formData.password,
-      telefon: formData.phone,
+      password: formData.password,
+      phone: formData.phone,
+      key: formData.key,
       rol: role
     };
 
     try {
       await axios.post('http://localhost:8080/api/kullanici/kayit', payload);
-      navigate('/login');
+      setSuccessMessage('Kayıt başarılı!'); // Başarı mesajı
+      setError(''); // Hata mesajlarını temizle
+
+      // Formu sıfırlama
+      setFormData({
+        name: '',
+        surname: '',
+        email: '',
+        password: '',
+        passwordConfirmation: '',
+        key: '',
+        phone: ''
+      });
     } catch (err) {
       setError('Bir hata oluştu: ' + (err.response?.data?.message || err.message));
     }
@@ -139,6 +157,7 @@ const RegisterPage = ({ openLogin }) => {
         </a>
       </p>
       {error && <div style={{ color: 'red' }}>{error}</div>}
+      {successMessage && <div style={{ color: 'green' }}>{successMessage}</div>} {/* Başarı mesajı */}
     </div>
   );
 };

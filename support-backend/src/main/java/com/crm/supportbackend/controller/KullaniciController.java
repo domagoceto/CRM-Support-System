@@ -9,6 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @RestController
 @RequestMapping("/api/kullanici")
 @CrossOrigin(origins = "*") // CORS açık olmalı frontend için
@@ -23,13 +26,29 @@ public class KullaniciController {
     @PostMapping("/giris")
     public ResponseEntity<?> login(@RequestBody KullaniciLoginDto dto) {
         try {
-            String loginResult = kullaniciService.login(dto); // Kullanıcıyı doğrulama
-            String token = jwtUtil.generateToken(dto.getEmail()); // JWT token üretme
-            return ResponseEntity.ok("Başarılı giriş. Token: " + token); // Token'ı dön
+            // Kullanıcıyı doğrulama işlemi
+            String loginResult = kullaniciService.login(dto); // Service'ten login sonucunu al
+
+            // Kullanıcıyı bulduk ve başarılı giriş sağlandı
+            Kullanici kullanici = kullaniciService.getKullaniciByEmail(dto.getEmail()); // Kullanıcıyı e-posta ile bul
+            String token = jwtUtil.generateToken(dto.getEmail()); // Token üretme
+
+            // JSON cevap olarak döndürme
+            Map<String, Object> response = new HashMap<>();
+            response.put("message", loginResult); // "Başarılı giriş" mesajı
+            response.put("token", token); // JWT token
+            response.put("rol", kullanici.getRol()); // Kullanıcının rolü
+
+            return ResponseEntity.ok(response);
         } catch (Exception e) {
-            return ResponseEntity.badRequest().body("Giriş başarısız: " + e.getMessage());
+            Map<String, String> errorResponse = new HashMap<>();
+            errorResponse.put("error", "Giriş başarısız: " + e.getMessage());
+            return ResponseEntity.badRequest().body(errorResponse);
         }
     }
+
+
+
 
     @PostMapping("/kayit")
     public ResponseEntity<?> register(@RequestBody KullaniciDto dto) {

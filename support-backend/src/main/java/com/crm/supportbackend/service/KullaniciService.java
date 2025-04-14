@@ -7,6 +7,7 @@ import com.crm.supportbackend.entity.Kullanici;
 
 public interface KullaniciService {
     Kullanici register(KullaniciDto dto);
+    Kullanici getKullaniciByEmail(String email);
     String login(KullaniciLoginDto dto);
 
 }
