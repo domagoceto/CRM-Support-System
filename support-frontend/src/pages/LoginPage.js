@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../styles/LoginPage.css';
 
-const LoginPage = ({ setUser, openRegister }) => {
+const LoginPage = ({ setUser, openRegister, setIsLoginOpen }) => {
   const [formData, setFormData] = useState({ email: '', password: '' });
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
@@ -14,44 +14,47 @@ const LoginPage = ({ setUser, openRegister }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+  
     const userData = { email: formData.email, password: formData.password };
-
+  
     const response = await fetch("http://localhost:8080/api/kullanici/giris", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(userData),
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userData),
     });
-
+  
     if (!response.ok) {
-        const errorData = await response.json();
-        alert(errorData.error || "Giriş başarısız.");
-        return;
+      const errorData = await response.json();
+      setMessage(errorData.error || "Giriş başarısız.");
+      return;
     }
-
+  
     const data = await response.json();
-
-    // Başarılı giriş
-    alert(data.message);
+  
+    // ✅ Burası önemli kısım:
     setUser(data);
-
-    switch (data.rol) {
+    console.log("Giriş yapan kullanıcı:", data); // ← bunu buraya ekle
+  
+    setMessage("Giriş başarılı!");
+    setTimeout(() => {
+      setIsLoginOpen(false); // popup kapanmasın diye bunu biraz bekletiyoruz
+      switch (data.rol) {
         case "CUSTOMER":
-            navigate("/userPanel");
-            break;
+          navigate("/UserPanel");
+          break;
         case "123":
-            navigate("/supportPanel");
-            break;
+          navigate("/supportPanel");
+          break;
         case "789":
-            navigate("/adminPanel");
-            break;
+          navigate("/adminPanel");
+          break;
         default:
-            alert("Rol bilgisi tanınmadı, yönlendirme yapılamıyor.");
-    }
-};
-
+          alert("Rol bilgisi tanınmadı, yönlendirme yapılamıyor.");
+      }
+    }, 1000);
+  };
   
   
 
@@ -89,13 +92,14 @@ const LoginPage = ({ setUser, openRegister }) => {
 
       {message && (
         <div
-          style={{
-            marginTop: '10px',
-            color: message.includes('başarılı') ? 'green' : 'red',
-          }}
-        >
-          {message}
-        </div>
+        style={{
+          marginTop: '10px',
+          color: message.toLowerCase().includes('başarılı') ? 'green' : 'red',
+          fontWeight: 'bold'
+        }}
+      >
+        {message}
+      </div>
       )}
 
       <p>

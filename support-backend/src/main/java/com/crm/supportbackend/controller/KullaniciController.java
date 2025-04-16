@@ -38,6 +38,9 @@ public class KullaniciController {
             response.put("message", loginResult); // "Başarılı giriş" mesajı
             response.put("token", token); // JWT token
             response.put("rol", kullanici.getRol()); // Kullanıcının rolü
+            response.put("ad", kullanici.getName());
+            response.put("soyad", kullanici.getSurname());
+            response.put("email", kullanici.getEmail());
 
             return ResponseEntity.ok(response);
         } catch (Exception e) {
