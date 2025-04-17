@@ -36,11 +36,12 @@ public class KullaniciController {
             // JSON cevap olarak döndürme
             Map<String, Object> response = new HashMap<>();
             response.put("message", loginResult); // "Başarılı giriş" mesajı
-            response.put("token", token); // JWT token
-            response.put("rol", kullanici.getRol()); // Kullanıcının rolü
+            response.put("token", token);
+            response.put("rol", kullanici.getRol());
             response.put("ad", kullanici.getName());
             response.put("soyad", kullanici.getSurname());
             response.put("email", kullanici.getEmail());
+            response.put("telefon", kullanici.getPhone());
 
             return ResponseEntity.ok(response);
         } catch (Exception e) {
@@ -49,10 +50,7 @@ public class KullaniciController {
             return ResponseEntity.badRequest().body(errorResponse);
         }
     }
-
-
-
-
+    
     @PostMapping("/kayit")
     public ResponseEntity<?> register(@RequestBody KullaniciDto dto) {
         try {

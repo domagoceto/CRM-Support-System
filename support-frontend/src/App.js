@@ -1,25 +1,47 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation, useNavigate } from 'react-router-dom'; 
 import { Link } from 'react-scroll'; 
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import UserPanel from './pages/UserPanel';
+import UserProfile from './sections/UserProfile';
 import './App.css';
-import UserNavbar from './sections/UserNavbar'; // UserNavbar'ı import ettik
 
 const AppLayout = () => {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isRegisterOpen, setIsRegisterOpen] = useState(false);
   const [user, setUser] = useState(null);
 
-  const location = useLocation(); // bu hook sadece Router içinde çalışır!
-  const isUserPanel = location.pathname === '/UserPanel'; // bulunduğumuz path'e göre kontrol
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  // Navbar sadece HomePage'de görünsün
+  const isHomePage = location.pathname === '/'; 
 
   const openLogin = () => {
     setIsLoginOpen(true);
     setIsRegisterOpen(false);
   };
+
+  const onLogout = () => {
+    // Çıkış yapma onayı almak için confirm kullanıyoruz
+    const confirmLogout = window.confirm("Çıkış yapmak istediğinizden emin misiniz?");
+    
+    if (confirmLogout) {
+      console.log("Kullanıcı çıkışı onayladı.");
+  
+      // Kullanıcıyı null yaparak çıkış yapıyoruz
+      setUser(null); 
+      // Ana sayfaya yönlendiriyoruz
+      navigate('/'); 
+    } else {
+      console.log("Kullanıcı çıkışı iptal etti.");
+    }
+  };
+  
+  
+  
 
   const openRegister = () => {
     setIsRegisterOpen(true);
@@ -33,8 +55,8 @@ const AppLayout = () => {
 
   return (
     <>
-      {/* Navbar yalnızca anasayfa gibi sayfalarda görünsün */}
-      {!isUserPanel && (
+      {/* Navbar sadece anasayfa'da görünsün */}
+      {isHomePage && (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
           <a className="navbar-brand mx-auto" href="#home">CRM Sistemi</a>
           <div className="collapse navbar-collapse">
@@ -59,15 +81,11 @@ const AppLayout = () => {
         </nav>
       )}
 
-      {/* UserPanel sayfası için özel navbar */}
-      {isUserPanel && (
-        <UserNavbar user={user} onLogout={() => setUser(null)} />
-      )}
-
       {/* Sayfa içerikleri */}
       <Routes>
         <Route path="/" element={<HomePage openLogin={openLogin} openRegister={openRegister} />} />
-        <Route path="/userPanel" element={<UserPanel user={user} />} />
+        <Route path="/userPanel" element={<UserPanel user={user} onLogout={onLogout} />} />
+        <Route path="/userPanel/profil" element={<UserProfile user={user} />} />
       </Routes>
 
       {/* Giriş ve Kayıt popup'ları */}
@@ -85,8 +103,8 @@ const AppLayout = () => {
         </div>
       )}
 
-      {/* Footer sadece userPanel dışında görünsün */}
-      {!isUserPanel && (
+      {/* Footer sadece HomePage'de görünsün */}
+      {isHomePage && (
         <footer className="footer bg-dark">
           <p className="text-center text-white">&copy; 2025 CRM Support. Tüm hakları saklıdır.</p>
         </footer>

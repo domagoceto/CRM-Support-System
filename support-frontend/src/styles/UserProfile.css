@@ -1,0 +1,147 @@
+/* Genel Sayfa Ayarları */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: tomato;
+}
+
+/* Profil Wrapper'ı ve Sayfa Yapısı */
+.user-profile-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: tomato;
+}
+
+/* Navbar */
+.user-profile-navbar {
+    display: flex;
+    justify-content: space-between; /* Sol ve sağdaki elemanları ayırır */
+    align-items: center; /* Dikeyde ortalar */
+    padding: 16px 40px;
+    background-color: #333;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 10;
+  }
+  
+  /* Profilim başlığını sola hizalamak */
+  .navbar-title {
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    flex: 1; /* Bu eleman sol tarafa itilir */
+  }
+
+/* Geri Butonu ve Güncelle Butonu */
+.btn-save, .btn-cancel, .btn-edit {
+    background-color: tomato; /* Butonların arka plan rengi */
+    color: white;
+    border: 1px solid tomato; /* Kenarlık rengi */
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.update-button:hover, .btn-save:hover, .btn-cancel:hover, .btn-edit:hover {
+    background-color: red; /* Hover rengi */
+    border-color: red;
+    color: white;
+}
+
+/* Profil İçeriği */
+.user-profile-container {
+    background: white;
+    padding: 40px;
+    width: 90%; /* Genişliği yüzde olarak belirledim */
+    max-width: 1000px; /* Genişliği biraz daha artırdım */
+    margin: 120px auto; /* Üstten ve alttan boşluk bıraktım */
+    border-radius: 12px;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    /* Profil kutusunu ortala */
+}
+
+.profile-title {
+    text-align: center; /* Başlık ortalanacak */
+    margin-bottom: 30px;
+    color: tomato;
+    font-size: 24px;
+}
+
+.back-button {
+    background-color: #333;
+    border: 1px solid white;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+
+  }
+
+/* Profil Alanı Satırları */
+.profile-row {
+    background-color: #f7f7f7; /* Tüm satırların arka planı açık gri */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+}
+
+.profile-row:nth-child(odd) {
+    background-color: #f7f7f7; /* Çift satır arka plan rengi daha açık gri */
+}
+
+.profile-row:hover {
+    background-color: #e0e0e0; /* Hover durumunda satırın arka planı */
+}
+
+.profile-row label {
+    width: 100px;
+    font-weight: bold;
+    color: #333; /* Yazı rengi siyah */
+}
+
+/* Görünüm ve Düzenleme Grupları */
+.display-group,
+.edit-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+    justify-content: space-between;
+    color: #333;
+}
+
+
+/* Profil Sol Panel */
+.profile-left {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Input ve Buton Stilleri */
+input[type="text"],
+input[type="password"] {
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.user-profile-footer {
+    text-align: center;
+    background-color: #333;
+    color: white;
+    padding: 15px;
+    margin-top: 20px;
+}
+

@@ -5,12 +5,9 @@ const UserNavbar = ({ user, onLogout }) => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    // Çıkış yapmadan önce onay al
-    const confirmLogout = window.confirm("Çıkış yapmak istediğinizden emin misiniz?");
-    if (confirmLogout) {
-      onLogout();
-      navigate('/'); // Çıkış yaptıktan sonra ana sayfaya yönlendir
-    }
+    console.log("Kullanıcı çıkışı onayladı.");
+    onLogout();
+    navigate('/'); 
   };
 
   return (
@@ -23,6 +20,7 @@ const UserNavbar = ({ user, onLogout }) => {
         <div className="collapse navbar-collapse">
           <ul className="navbar-nav ms-auto">
             <li className="nav-item">
+              {/* Çıkış yapma butonu */}
               <button className="btn btn-light" onClick={handleLogout}>Çıkış Yap</button>
             </li>
           </ul>
