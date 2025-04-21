@@ -19,7 +19,7 @@ const UserPanel = ({ user, onLogout }) => {
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
           <span className="navbar-brand">Hoşgeldin, {user?.ad}</span> {/* Kullanıcı adı burada gösteriliyor */}
-          <button className="btn btn-outline-light" onClick={onLogout}>Çıkış Yap</button>
+          <button className="btn custom-logout-btn" onClick={onLogout}>Çıkış Yap</button>
         </div>
       </nav>
 

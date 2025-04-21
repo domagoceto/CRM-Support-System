@@ -5,6 +5,7 @@ import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import UserPanel from './pages/UserPanel';
+import DestekTalep from './sections/DestekTalep';
 import UserProfile from './sections/UserProfile';
 import './App.css';
 
@@ -40,9 +41,6 @@ const AppLayout = () => {
     }
   };
   
-  
-  
-
   const openRegister = () => {
     setIsRegisterOpen(true);
     setIsLoginOpen(false);
@@ -85,6 +83,7 @@ const AppLayout = () => {
       <Routes>
         <Route path="/" element={<HomePage openLogin={openLogin} openRegister={openRegister} />} />
         <Route path="/userPanel" element={<UserPanel user={user} onLogout={onLogout} />} />
+        <Route path="/userPanel/destek-talep" element={<DestekTalep />} />
         <Route path="/userPanel/profil" element={<UserProfile user={user} />} />
       </Routes>
 

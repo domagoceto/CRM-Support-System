@@ -77,3 +77,18 @@ body {
   left: 0;
 
 }
+
+.custom-logout-btn {
+  background-color: tomato !important;
+  color: white !important;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: bold;
+ 
+}
+
+.custom-logout-btn:hover {
+  background-color: red !important;
+}
+

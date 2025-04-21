@@ -1,0 +1,99 @@
+.destek-talep-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: tomato;
+  }
+  
+  .destek-talep-navbar {
+    display: flex;
+    justify-content: space-between; /* Sol ve sağdaki elemanları ayırır */
+    align-items: center; /* Dikeyde ortalar */
+    padding: 16px 40px;
+    background-color: #333;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 10;
+  }
+  
+  
+  .navbar-title {
+    font-size: 18px !important;
+    font-weight: bold;
+  }
+  
+  .back-button {
+    background-color: tomato !important;
+    color: tomato;
+    border: 1px solid white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  .back-button:hover {
+    background-color: red !important;
+  }
+  
+  .form-header {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    color: tomato;
+  }
+  
+  
+  .destek-talep-container {
+    flex: 1;
+    margin: 90px auto 40px; /* Üstten boşluk verildi (navbar yüksekliğinden biraz fazla) */
+    padding: 50px;
+    width: 90%;
+    max-width: 700px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  
+  .support-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .support-form input,
+  .support-form select,
+  .support-form textarea {
+    width: 100%;
+    padding: 0.9rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+  }
+  
+  .btn-submit {
+    background-color: tomato;
+    color: white;
+    font-weight: bold;
+    padding: 0.9rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .btn-submit:hover {
+    background-color: red;
+  }
+  
+  .destek-talep-footer {
+    text-align: center;
+    background-color: #333;
+    color: white;
+    padding: 15px;
+    margin-top: auto;
+  }
+  
+  
