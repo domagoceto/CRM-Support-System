@@ -83,8 +83,8 @@ const AppLayout = () => {
       <Routes>
         <Route path="/" element={<HomePage openLogin={openLogin} openRegister={openRegister} />} />
         <Route path="/userPanel" element={<UserPanel user={user} onLogout={onLogout} />} />
-        <Route path="/userPanel/destek-talep" element={<DestekTalep />} />
         <Route path="/userPanel/profil" element={<UserProfile user={user} />} />
+        <Route path="/userPanel/destek-talep" element={<DestekTalep user={user} />} />
       </Routes>
 
       {/* Giriş ve Kayıt popup'ları */}

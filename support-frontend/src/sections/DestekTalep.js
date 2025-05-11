@@ -1,88 +1,107 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import '../styles/DestekTalep.css';
 
-const DestekTalep = ({ user }) => {
-  const navigate = useNavigate();
+const DestekTalep = () => {
   const [formData, setFormData] = useState({
     konu: '',
     mesaj: '',
     lisans: ''
   });
 
-  const [lisanslar, setLisanslar] = useState([
-    'Lisans A',
-    'Lisans B',
-    'Lisans C'
-  ]);
+  const [message, setMessage] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData(prev => ({
+      ...prev,
+      [e.target.name]: e.target.value
+    }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const talepVerisi = {
-      ad: user.ad,
-      email: user.email,
-      ...formData
-    };
-    console.log('Destek talebi gönderildi:', talepVerisi);
-    alert('Destek talebiniz başarıyla gönderildi!');
-    // Burada API isteği gönderilebilir
-  };
 
-  const handleBack = () => {
-    navigate('/userpanel');
+    const token = localStorage.getItem('token');
+    if (!token) {
+      setMessage("Giriş yapılmamış. Lütfen önce giriş yapın.");
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      await axios.post(
+        'http://localhost:8080/api/destek-talep/talep',
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+      setMessage('Destek talebiniz başarıyla gönderildi.');
+      setFormData({ konu: '', mesaj: '', lisans: '' }); // Formu sıfırla
+    } catch (error) {
+      console.error('Destek talebi hatası:', error);
+      setMessage('Destek talebiniz gönderilemedi, lütfen tekrar deneyin.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <div className="destek-talep-wrapper">
       <div className="destek-talep-navbar">
-        <span className="navbar-title">Destek Talep</span>
-        <button className="back-button" onClick={handleBack}>Geri</button>
+        <div className="navbar-title">Destek Sistemi</div>
+        <button className="back-button" onClick={() => window.history.back()}>
+          Geri Dön
+        </button>
       </div>
 
       <div className="destek-talep-container">
-        <form onSubmit={handleSubmit} className="support-form">
-            <h2 className="form-header">Talep Oluştur</h2>
-
-        
-            <div className="form-group">
-            <label htmlFor="lisans"></label>
-            <select name="lisans" value={formData.lisans} onChange={handleChange} required>
-                <option value="">Lisans Seçiniz</option>
-                {lisanslar.map((lisans, i) => (
-                <option key={i} value={lisans}>{lisans}</option>
-                ))}
-            </select>
-            </div>
-
-            <input
+        <h2 className="form-header">Destek Talebi Oluştur</h2>
+        <form className="support-form" onSubmit={handleSubmit}>
+          <input
             type="text"
             name="konu"
-            placeholder="Konu"
             value={formData.konu}
             onChange={handleChange}
+            placeholder="Konu"
             required
-            />
-
-            <textarea
+          />
+          <textarea
             name="mesaj"
-            placeholder="Mesajınız"
-            rows="6"
             value={formData.mesaj}
             onChange={handleChange}
+            placeholder="Mesajınız"
             required
-            />
-            <button type="submit" className="btn-submit">Gönder</button>
+          />
+          <input
+            type="text"
+            name="lisans"
+            value={formData.lisans}
+            onChange={handleChange}
+            placeholder="Lisans Bilgisi"
+            required
+          />
+          <button type="submit" className="btn-submit" disabled={loading}>
+            {loading ? 'Gönderiliyor...' : 'Gönder'}
+          </button>
         </form>
-        </div>
 
-
-      <div className="destek-talep-footer">
-        <p>&copy; 2025 CRM Support. Tüm hakları saklıdır.</p>
+        {message && (
+          <p
+            style={{
+              marginTop: '10px',
+              color: message.includes('başarı') ? 'green' : 'red',
+              textAlign: 'center'
+            }}
+          >
+            {message}
+          </p>
+        )}
       </div>
     </div>
   );

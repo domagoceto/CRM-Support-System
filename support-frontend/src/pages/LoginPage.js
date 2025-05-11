@@ -14,49 +14,57 @@ const LoginPage = ({ setUser, openRegister, setIsLoginOpen }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     const userData = { email: formData.email, password: formData.password };
-  
-    const response = await fetch("http://localhost:8080/api/kullanici/giris", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(userData),
-    });
-  
-    if (!response.ok) {
-      const errorData = await response.json();
-      setMessage(errorData.error || "Giriş başarısız.");
-      return;
-    }
-  
-    const data = await response.json();
-  
-    // ✅ Burası önemli kısım:
-    setUser(data);
-    console.log("Giriş yapan kullanıcı:", data); // ← bunu buraya ekle
-  
-    setMessage("Giriş başarılı!");
-    setTimeout(() => {
-      setIsLoginOpen(false); // popup kapanmasın diye bunu biraz bekletiyoruz
-      switch (data.rol) {
-        case "CUSTOMER":
-          navigate("/UserPanel");
-          break;
-        case "123":
-          navigate("/supportPanel");
-          break;
-        case "789":
-          navigate("/adminPanel");
-          break;
-        default:
-          alert("Rol bilgisi tanınmadı, yönlendirme yapılamıyor.");
+
+    try {
+      const response = await fetch("http://localhost:8080/api/kullanici/giris", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userData),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        setMessage(errorData.error || "Giriş başarısız.");
+        return;
       }
-    }, 1000);
+
+      const data = await response.json();
+
+      // Token ve kullanıcıyı localStorage'a kaydet
+      localStorage.setItem('token', data.token);
+      localStorage.setItem('user', JSON.stringify(data));
+
+      // App state'e kullanıcıyı ata
+      setUser(data);
+
+      setMessage("Giriş başarılı!");
+
+      setTimeout(() => {
+        setIsLoginOpen(false);
+
+        switch (data.rol) {
+          case "CUSTOMER":
+            navigate("/UserPanel");
+            break;
+          case "123":
+            navigate("/supportPanel");
+            break;
+          case "789":
+            navigate("/adminPanel");
+            break;
+          default:
+            alert("Rol bilgisi tanınmadı, yönlendirme yapılamıyor.");
+        }
+      }, 1000);
+    } catch (error) {
+      console.error("Giriş sırasında hata:", error);
+      setMessage("Bir hata oluştu. Lütfen tekrar deneyin.");
+    }
   };
-  
-  
 
   return (
     <div className="login-page-container">
@@ -92,14 +100,14 @@ const LoginPage = ({ setUser, openRegister, setIsLoginOpen }) => {
 
       {message && (
         <div
-        style={{
-          marginTop: '10px',
-          color: message.toLowerCase().includes('başarılı') ? 'green' : 'red',
-          fontWeight: 'bold'
-        }}
-      >
-        {message}
-      </div>
+          style={{
+            marginTop: '10px',
+            color: message.toLowerCase().includes('başarılı') ? 'green' : 'red',
+            fontWeight: 'bold'
+          }}
+        >
+          {message}
+        </div>
       )}
 
       <p>

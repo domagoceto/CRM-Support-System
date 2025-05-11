@@ -1,6 +1,6 @@
 package com.crm.supportbackend.controller;
 
-import com.crm.supportbackend.Util.JWTUtil;
+import com.crm.supportbackend.config.JwtTokenProvider;
 import com.crm.supportbackend.dto.KullaniciDto;
 import com.crm.supportbackend.dto.KullaniciLoginDto;
 import com.crm.supportbackend.entity.Kullanici;
@@ -14,28 +14,30 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/kullanici")
-@CrossOrigin(origins = "*") // CORS açık olmalı frontend için
+@CrossOrigin(origins = "*") // Frontend için CORS açtık
 public class KullaniciController {
 
     @Autowired
     private KullaniciService kullaniciService;
 
     @Autowired
-    private JWTUtil jwtUtil;
+    private JwtTokenProvider jwtTokenProvider;
 
     @PostMapping("/giris")
     public ResponseEntity<?> login(@RequestBody KullaniciLoginDto dto) {
         try {
-            // Kullanıcıyı doğrulama işlemi
-            String loginResult = kullaniciService.login(dto); // Service'ten login sonucunu al
+            // Kullanıcı giriş işlemi
+            String loginResult = kullaniciService.login(dto);
 
-            // Kullanıcıyı bulduk ve başarılı giriş sağlandı
-            Kullanici kullanici = kullaniciService.getKullaniciByEmail(dto.getEmail()); // Kullanıcıyı e-posta ile bul
-            String token = jwtUtil.generateToken(dto.getEmail()); // Token üretme
+            // Giriş başarılı, kullanıcıyı al
+            Kullanici kullanici = kullaniciService.getKullaniciByEmail(dto.getEmail());
 
-            // JSON cevap olarak döndürme
+            // JWT token oluştur
+            String token = jwtTokenProvider.createToken(dto.getEmail());
+
+            // JSON yanıtı hazırla
             Map<String, Object> response = new HashMap<>();
-            response.put("message", loginResult); // "Başarılı giriş" mesajı
+            response.put("message", loginResult);
             response.put("token", token);
             response.put("rol", kullanici.getRol());
             response.put("ad", kullanici.getName());
@@ -50,7 +52,7 @@ public class KullaniciController {
             return ResponseEntity.badRequest().body(errorResponse);
         }
     }
-    
+
     @PostMapping("/kayit")
     public ResponseEntity<?> register(@RequestBody KullaniciDto dto) {
         try {
