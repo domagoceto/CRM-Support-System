@@ -1,0 +1,39 @@
+.navbar-title {
+  font-size: 1.25rem;
+  color: white;
+  margin: 0;
+  text-align: left;
+}
+
+.geri-btn {
+  background-color: tomato;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  transition: background-color 0.3s;
+}
+
+.geri-btn:hover {
+  background-color: red;
+  cursor: pointer;
+}
+
+/* ✨ Bu kısmı güncelliyoruz */
+.talepler-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  padding-top: 80px;
+}
+
+.talep-card {
+  background-color: #ffffff;
+  padding: 16px;
+  border: 1px solid #cccccc;
+  border-radius: 8px;
+  color: #000000;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}

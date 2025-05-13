@@ -7,6 +7,7 @@ import RegisterPage from './pages/RegisterPage';
 import UserPanel from './pages/UserPanel';
 import DestekTalep from './sections/DestekTalep';
 import UserProfile from './sections/UserProfile';
+import Taleplerim from './sections/Taleplerim';
 import './App.css';
 
 const AppLayout = () => {
@@ -85,6 +86,7 @@ const AppLayout = () => {
         <Route path="/userPanel" element={<UserPanel user={user} onLogout={onLogout} />} />
         <Route path="/userPanel/profil" element={<UserProfile user={user} />} />
         <Route path="/userPanel/destek-talep" element={<DestekTalep user={user} />} />
+        <Route path="/userPanel/destek-taleplerim" element={<Taleplerim user={user} />} />
       </Routes>
 
       {/* Giriş ve Kayıt popup'ları */}

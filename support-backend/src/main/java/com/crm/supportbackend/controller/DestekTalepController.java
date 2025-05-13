@@ -55,13 +55,13 @@ public class DestekTalepController {
 
     @GetMapping("/kullanici")
     public List<DestekTalep> kullanicininTalepleri() {
-        // Giriş yapan kullanıcıyı çek
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String email = ((User) authentication.getPrincipal()).getUsername();  // Kullanıcıyı Email ile alıyoruz
+        String email = (String) authentication.getPrincipal(); // <-- düzeltildi
 
         Kullanici kullanici = kullaniciRepository.findByEmail(email)
                 .orElseThrow(() -> new RuntimeException("Kullanıcı bulunamadı"));
 
         return destekTalepRepository.findByKullaniciId(kullanici.getId());
     }
+
 }
