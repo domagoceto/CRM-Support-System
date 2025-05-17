@@ -32,8 +32,8 @@ public class KullaniciController {
             // Giriş başarılı, kullanıcıyı al
             Kullanici kullanici = kullaniciService.getKullaniciByEmail(dto.getEmail());
 
-            // JWT token oluştur
-            String token = jwtTokenProvider.createToken(dto.getEmail());
+            // JWT token oluştur (rol bilgisi de ekleniyor)
+            String token = jwtTokenProvider.createToken(dto.getEmail(), kullanici.getRol().name());  // Rolü ekledik
 
             // JSON yanıtı hazırla
             Map<String, Object> response = new HashMap<>();
@@ -52,6 +52,7 @@ public class KullaniciController {
             return ResponseEntity.badRequest().body(errorResponse);
         }
     }
+
 
     @PostMapping("/kayit")
     public ResponseEntity<?> register(@RequestBody KullaniciDto dto) {

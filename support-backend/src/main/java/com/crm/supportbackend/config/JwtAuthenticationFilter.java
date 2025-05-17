@@ -24,14 +24,22 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                                     FilterChain filterChain) throws ServletException, IOException {
         System.out.println("🔐 JWT FILTER ÇALIŞTI");
 
-        String token = request.getHeader("Authorization");
+        String path = request.getRequestURI();
 
-        if (token != null && token.startsWith("Bearer ")) {
-            token = token.substring(7);
+        // Giriş ve kayıt yolları için JWT kontrolü yapılmasın
+        if (path.equals("/api/kullanici/giris") || path.equals("/api/kullanici/kayit")) {
+            filterChain.doFilter(request, response);
+            return;
+        }
+
+        String header = request.getHeader("Authorization");
+
+        if (header != null && header.startsWith("Bearer ")) {
+            String token = header.substring(7);
             if (jwtTokenProvider.validateToken(token)) {
-                Authentication auth = jwtTokenProvider.getAuthentication(token);
+                Authentication auth = jwtTokenProvider.getAuthentication(token); // 🔑 Kullanıcı + roller burada set edilmeli
                 SecurityContextHolder.getContext().setAuthentication(auth);
-                System.out.println("✅ TOKEN GEÇERLİ, AUTH SET EDİLDİ");
+                System.out.println("✅ TOKEN GEÇERLİ, AUTH SET EDİLDİ: " + auth.getName());
             } else {
                 System.out.println("❌ TOKEN GEÇERSİZ");
             }
@@ -41,5 +49,4 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
         filterChain.doFilter(request, response);
     }
-
 }

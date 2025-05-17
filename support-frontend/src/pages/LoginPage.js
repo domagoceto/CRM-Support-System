@@ -13,58 +13,60 @@ const LoginPage = ({ setUser, openRegister, setIsLoginOpen }) => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    const userData = { email: formData.email, password: formData.password };
+  const userData = { email: formData.email, password: formData.password };
 
-    try {
-      const response = await fetch("http://localhost:8080/api/kullanici/giris", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(userData),
-      });
+  try {
+    const response = await fetch("http://localhost:8080/api/kullanici/giris", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userData),
+    });
 
-      if (!response.ok) {
-        const errorData = await response.json();
-        setMessage(errorData.error || "Giriş başarısız.");
-        return;
-      }
-
-      const data = await response.json();
-
-      // Token ve kullanıcıyı localStorage'a kaydet
-      localStorage.setItem('token', data.token);
-      localStorage.setItem('user', JSON.stringify(data));
-
-      // App state'e kullanıcıyı ata
-      setUser(data);
-
-      setMessage("Giriş başarılı!");
-
-      setTimeout(() => {
-        setIsLoginOpen(false);
-
-        switch (data.rol) {
-          case "CUSTOMER":
-            navigate("/UserPanel");
-            break;
-          case "123":
-            navigate("/supportPanel");
-            break;
-          case "789":
-            navigate("/adminPanel");
-            break;
-          default:
-            alert("Rol bilgisi tanınmadı, yönlendirme yapılamıyor.");
-        }
-      }, 1000);
-    } catch (error) {
-      console.error("Giriş sırasında hata:", error);
-      setMessage("Bir hata oluştu. Lütfen tekrar deneyin.");
+    if (!response.ok) {
+      const errorData = await response.json();
+      setMessage(errorData.error || "Giriş başarısız.");
+      return;
     }
-  };
+
+    const data = await response.json();
+
+    // Token ve kullanıcıyı localStorage'a kaydet
+    localStorage.setItem('token', data.token);
+    localStorage.setItem('user', JSON.stringify(data));
+
+    // App state'e kullanıcıyı ata
+    setUser(data);
+
+    setMessage("Giriş başarılı!");
+
+    setTimeout(() => {
+      setIsLoginOpen(false);
+
+      // Rol bilgisine göre yönlendirme
+      switch (data.rol) {
+        case "CUSTOMER":
+          navigate("/UserPanel");
+          break;
+        case "SUPPORT":
+          navigate("/SupportPanel");
+          break;
+        case "ADMIN":
+          navigate("/adminPanel");
+          break;
+        default:
+          alert("Rol bilgisi tanınmadı, yönlendirme yapılamıyor.");
+      }
+    }, 1000);
+  } catch (error) {
+    console.error("Giriş sırasında hata:", error);
+    setMessage("Bir hata oluştu. Lütfen tekrar deneyin.");
+  }
+};
+
 
   return (
     <div className="login-page-container">

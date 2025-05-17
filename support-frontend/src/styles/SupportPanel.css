@@ -1,0 +1,68 @@
+.support-panel-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: tomato;
+}
+
+.panel-title, .panel-subtitle {
+  text-align: center;
+}
+
+.panel-title {
+  margin-top: 30px;
+  font-size: 28px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.panel-subtitle {
+  font-size: 18px;
+  color: #fefefe;
+  margin-bottom: 30px;
+}
+
+.panel-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding-bottom: 40px;
+}
+
+.panel-card {
+  background-color: white;
+  border-radius: 10px;
+  padding: 30px;
+  cursor: pointer;
+  width: 220px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.panel-card:hover {
+  transform: scale(1.05);
+}
+
+.panel-card span {
+  display: block;
+  margin-top: 10px;
+  font-size: 18px;
+  color: #333;
+}
+
+/* Navbar düzenlemesi */
+.navbar.bg-primary {
+  background-color: #333 !important;
+}
+
+/* Footer sabitleme ve renk */
+.footer-support {
+  margin-top: auto;
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 15px 0;
+  font-size: 14px;
+}

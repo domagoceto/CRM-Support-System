@@ -5,6 +5,8 @@ import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import UserPanel from './pages/UserPanel';
+import SupportPanel from './pages/SupportPanel';
+import KullaniciListesi from './sections/KullaniciListesi';
 import DestekTalep from './sections/DestekTalep';
 import UserProfile from './sections/UserProfile';
 import Taleplerim from './sections/Taleplerim';
@@ -87,6 +89,9 @@ const AppLayout = () => {
         <Route path="/userPanel/profil" element={<UserProfile user={user} />} />
         <Route path="/userPanel/destek-talep" element={<DestekTalep user={user} />} />
         <Route path="/userPanel/destek-taleplerim" element={<Taleplerim user={user} />} />
+        <Route path="/supportPanel" element={<SupportPanel supportUser={user} onLogout={onLogout} />} />
+         <Route path="/supportPanel/kullanicilar" element={<KullaniciListesi />} />  
+
       </Routes>
 
       {/* Giriş ve Kayıt popup'ları */}

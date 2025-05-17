@@ -10,5 +10,6 @@ import java.util.Optional;
 @Repository
 public interface KullaniciRepository extends JpaRepository<Kullanici, Long> {
     Optional<Kullanici> findByEmail(String email);
+
 }
 

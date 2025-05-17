@@ -29,12 +29,13 @@ public class JwtTokenProvider {
     }
 
 
-    public String createToken(String username) {
+    public String createToken(String username, String rol) {
         Date now = new Date();
         Date validity = new Date(now.getTime() + 3600000); // 1 saat geçerli
 
         return Jwts.builder()
                 .setSubject(username)
+                .claim("rol", rol)  // Rol bilgisini ekliyoruz
                 .setIssuedAt(now)
                 .setExpiration(validity)
                 .signWith(key, SignatureAlgorithm.HS256)
@@ -42,9 +43,21 @@ public class JwtTokenProvider {
     }
 
     public Authentication getAuthentication(String token) {
-        String username = getUsername(token);
-        return new UsernamePasswordAuthenticationToken(username, "", java.util.Collections.emptyList());
+        Claims claims = Jwts.parserBuilder()
+                .setSigningKey(key)
+                .build()
+                .parseClaimsJws(token)
+                .getBody();
+
+        String username = claims.getSubject();
+        String rol = (String) claims.get("rol");
+
+        // Yetkiyi ROLE_ prefixiyle veriyoruz
+        var authorities = java.util.List.of(new org.springframework.security.core.authority.SimpleGrantedAuthority("ROLE_" + rol));
+
+        return new UsernamePasswordAuthenticationToken(username, "", authorities);
     }
+
 
     public String getUsername(String token) {
         return Jwts.parserBuilder().setSigningKey(key).build()

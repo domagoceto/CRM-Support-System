@@ -1,0 +1,107 @@
+/* Sayfa genel arka planı */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: tomato;
+}
+
+/* Ana yapı */
+.kullanici-listesi {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  color: white;
+}
+
+/* Navbar */
+.navbar-liste  {
+  background-color: #333;
+  color: white;
+  padding: 15px 20px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Bu, başlık sol, buton sağ yapacak */
+  position: relative;
+}
+
+/* Geri butonu (opsiyonel) */
+.navbar button {
+  background-color: #555;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+.navbar button:hover {
+  background-color: #777;
+}
+
+/* Tablo */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: tomato; /* tablo arka planı da tomato */
+  margin-top: 20px;
+  color: white; /* yazılar beyaz */
+}
+
+table th,
+table td {
+  border: 1px solid #fff;
+  padding: 10px;
+  text-align: left;
+}
+
+table th {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+/* Mesaj butonu */
+.mesaj-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  transition: transform 0.2s;
+  color: white;
+}
+
+.mesaj-btn:hover {
+  transform: scale(1.2);
+  color: #005eff;
+}
+
+/* Footer */
+.footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  margin-top: auto;
+}
+
+.geri-btn {
+  background-color: tomato !important;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+.geri-btn:hover {
+  background-color: red !important;
+}
+
+.navbar-title {
+  font-weight: bold;
+  font-size: 20px;
+}
