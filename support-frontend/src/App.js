@@ -10,6 +10,8 @@ import KullaniciListesi from './sections/KullaniciListesi';
 import DestekTalep from './sections/DestekTalep';
 import UserProfile from './sections/UserProfile';
 import Taleplerim from './sections/Taleplerim';
+import Talepler from './sections/Talepler'; 
+
 import './App.css';
 
 const AppLayout = () => {
@@ -91,6 +93,7 @@ const AppLayout = () => {
         <Route path="/userPanel/destek-taleplerim" element={<Taleplerim user={user} />} />
         <Route path="/supportPanel" element={<SupportPanel supportUser={user} onLogout={onLogout} />} />
          <Route path="/supportPanel/kullanicilar" element={<KullaniciListesi />} />  
+         <Route path="/supportPanel/destek-talepleri" element={<Talepler />} />
 
       </Routes>
 

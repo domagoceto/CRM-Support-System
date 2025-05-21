@@ -24,6 +24,8 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.projectlombok:lombok:1.18.24'
     implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
+    implementation 'org.modelmapper:modelmapper:3.1.1'
+
     annotationProcessor 'org.projectlombok:lombok:1.18.24'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     runtimeOnly 'org.postgresql:postgresql'
