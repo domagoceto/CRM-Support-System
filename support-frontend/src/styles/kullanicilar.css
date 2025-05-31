@@ -1,0 +1,81 @@
+/* Genel stil */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  color: #000; /* Genel yazı rengi siyah */
+}
+
+/* Navbar */
+.kullanicilar-navbar {
+  background-color: #333;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+}
+
+.kullanicilar-navbar h2 {
+  margin: 0;
+  font-size: 20px;
+  color: white;
+}
+
+.kullanicilar-navbar button {
+  background-color: tomato;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.kullanicilar-navbar button:hover {
+  background-color: red;
+}
+
+/* Sayfa içeriği */
+.kullanicilar-container {
+  padding: 40px;
+  color: #000;
+}
+
+.kullanicilar-container h3 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+/* Tablo */
+.kullanici-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: tomato;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  color: white; /* Tablo yazı rengi siyah */
+}
+
+.kullanici-table th, .kullanici-table td {
+  padding: 12px 16px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.kullanici-table th {
+  background-color: tomato;
+  color: white;
+}
+
+
+/* Footer */
+.kullanicilar-footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 12px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}

@@ -19,8 +19,8 @@ import java.util.stream.Collectors;
 public class SupportServiceImpl implements SupportService {
 
     private final KullaniciRepository kullaniciRepository;
-    private final DestekTalepRepository destekTalepRepository; // ✅ eksikti
-    private final ModelMapper modelMapper;                     // ✅ eksikti
+    private final DestekTalepRepository destekTalepRepository; 
+    private final ModelMapper modelMapper;
 
     @Override
     public List<KullaniciListeDto> getAllKullanicilar() {

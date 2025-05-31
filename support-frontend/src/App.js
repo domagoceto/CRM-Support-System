@@ -6,11 +6,16 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import UserPanel from './pages/UserPanel';
 import SupportPanel from './pages/SupportPanel';
+import AdminPanel from './pages/AdminPanel';
 import KullaniciListesi from './sections/KullaniciListesi';
 import DestekTalep from './sections/DestekTalep';
 import UserProfile from './sections/UserProfile';
 import Taleplerim from './sections/Taleplerim';
 import Talepler from './sections/Talepler'; 
+import Kullanicilar from './sections/kullanicilar';
+import AdminProfile from './sections/AdminProfile';
+import AdminTalepler from './sections/AdminTalepler';
+
 
 import './App.css';
 
@@ -94,6 +99,13 @@ const AppLayout = () => {
         <Route path="/supportPanel" element={<SupportPanel supportUser={user} onLogout={onLogout} />} />
          <Route path="/supportPanel/kullanicilar" element={<KullaniciListesi />} />  
          <Route path="/supportPanel/destek-talepleri" element={<Talepler />} />
+         <Route path="/adminPanel" element={<AdminPanel />} />
+         <Route path="/adminPanel/kullanicilar" element={<Kullanicilar />} />
+         <Route path="/adminPanel/profil" element={<AdminProfile />} />
+         <Route path="/adminPanel/AdminTalepler" element={<AdminTalepler />} />
+
+
+
 
       </Routes>
 

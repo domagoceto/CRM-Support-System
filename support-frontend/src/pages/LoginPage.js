@@ -55,7 +55,7 @@ const LoginPage = ({ setUser, openRegister, setIsLoginOpen }) => {
           navigate("/SupportPanel");
           break;
         case "ADMIN":
-          navigate("/adminPanel");
+          navigate("/AdminPanel");
           break;
         default:
           alert("Rol bilgisi tanınmadı, yönlendirme yapılamıyor.");
